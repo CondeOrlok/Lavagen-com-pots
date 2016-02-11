@@ -1,1 +1,65 @@
-Preencher aqui
+##########################################################
+# Macro kore reabastecer poção by Conde Orlok		 #
+# Version 1.0 - 10.02.2016				 #                                            
+# Brazilian Openkore forum: http://openkorebrasil.org/   #  
+# A idéia é o kore ir comprar Poções com um              #
+# mercador específico e automaticamente fazer lavagen de #
+# zenys, As Brancas estarão superfaturadas XD            #
+########################################################## 
+# The idea is the kore go buy potions with a specific    #
+# merchant and automatically make washes zeny, white will#
+# be overpriced                                          #  
+##########################################################
+
+automacro poção {
+inventory "Poção Laranja" < 1
+inventory "Poção Branca" < 1
+
+var selling == 0
+Boolean Flag
+	Run_once 1
+Call {
+$ ZenyInicial = $ .zeny
+[
+log ========== Iniciando trajeto =================
+log ========== tenho $ zeny inicial zeny =========
+]
+
+whulle (@invamount(Poção Laranja) < 1 ) as loop
+	do move prontera x y End loop
+Release Poção Laranja
+}
+}
+
+automacro shopperSell { inventory "Poção Laranja" > = 50, "Poção Branca" = > 10
+location prontera
+	Run_once 1
+	Call { 
+	if (@invamount (Poção Laranja) > 0 {
+	do Conf shopper_0_Disabled 0
+	
+	# Reseta as configurações de compras de itens
+	
+	Pause 1
+	do Conf shopper.maxAmount 1
+	Pause 1
+	}
+        }
+	
+	if (@ivamout Poção Branca > 0) {
+	do Conf shopper_2_Disabled 0
+	
+	# Reseta as configurações de compras de itens
+	
+	do Conf shopper2.maxAmount 1
+	}
+	
+	automacro ReOpening {
+    console /(você está no jogo)|(you are nowin the game)/:
+    location Prontera
+    timeout 5
+    call {
+         do ai auto ## ativando ai para que ele volte a upar !!
+    }
+
+
