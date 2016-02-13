@@ -10,3 +10,12 @@ run-once 1
 			log ::::::::: Começando os trabalhos ::::::::::
 			log ::::::::: Tenho $zenyInicial zeny ::::::::
 			]
+
+
+
+
+Idéia desta automacro, criar log com estas infos
+log ::::::: qntidade de zeny inicial
+log ::::::: qntidade de zeny de venda
+log ::::::: qntidade de zeny skill afanar
+log ::::::: Qntidade total de zeny x trilhões
