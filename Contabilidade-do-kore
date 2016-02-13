@@ -1,0 +1,12 @@
+automacro contabilidade {
+    Boolean Flag
+run-once 1
+	
+		call {
+		
+			$zenyInicial = $.zeny
+			
+			[
+			log ::::::::: Começando os trabalhos ::::::::::
+			log ::::::::: Tenho $zenyInicial zeny ::::::::
+			]
