@@ -1,0 +1,39 @@
+automacro trocarMoedas {
+        hp > 1%
+        exclusive 1
+                priority 3
+        overrideAI 1
+        inventory "Moeda do Rei Poring" >= 50
+        call {
+                [
+                log ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+                log ~ Indo trocar as moedas ~
+                log ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+                ]
+                                pause 5
+                do move prontera @rand(140, 155) @rand(50, 65)
+                pause 3
+                do talknpc 146 60 c r3 c
+                release
+        }
+        timeout 30
+}
+ 
+automacro relatorioEvntPoring {
+        hp > 1%
+call {
+                # $quntMoedas = @invamount (Moeda do Rei Poring)
+                $quntMoedas = @eval(@invamount (Moeda do Rei Poring) + @storamount (Moeda do Rei Poring))
+                $quntAlbum = @eval(@invamount (Álbum Mágico de Cartas) + @storamount (Álbum Mágico de Cartas))
+                $quntMelArmas = @eval(@invamount (Caixa das Melhores Armas) + @storamount (Caixa das Melhores Armas))
+               
+                [
+                log ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+                log ~ Agora eu tenho $quntMoedas Moedas do Rei Poring ~
+                log ~ Agora eu tenho $quntAlbum Álbums de Cartas Mágicas ~
+                log ~ Agora eu tenho $quntMelArmas Caixas das Melhores Armas ~
+                log ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+                ]
+        }
+        timeout 30
+}
