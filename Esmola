@@ -1,0 +1,30 @@
+automacro umaEsmola {
+    hook item_gathered
+    save item
+    call {
+                $qunt = @eval(@invamount (Moeda do Rei Poring) + @storamount (Moeda do Rei Poring))
+                $item = Moeda do Rei Poring
+                if ($.hooksave0 == $item) {
+                [
+                log ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+                log Peguei um $.hooksave0
+                log Agora eu tenho $qunt
+                log ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+                ]
+                }
+    }
+}
+ 
+automacro qntMoedas {
+        hp > 50%
+call {
+                # $qunt = @invamount (Moeda do Rei Poring)
+                $qunt = @eval(@invamount (Moeda do Rei Poring) + @storamount (Moeda do Rei Poring))
+                [
+                log ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+                log ~ Agora eu tenho $qunt Moedas do Rei Poring ~
+                log ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+                ]
+        }
+        timeout 30
+}
