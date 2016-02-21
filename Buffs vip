@@ -1,0 +1,40 @@
+##############    Buff Vip    ###############
+# EFST_FOOD_STR # Steamed Tongue                        #
+# EFST_FOOD_AGI # Steamed Scorpion                      #
+# EFST_FOOD_VIT # Stew Of Immortality           #
+# EFST_FOOD_DEX # Hwergelmir's Tonic            #
+# EFST_FOOD_INT # Dragon Breath Cocktail        #
+# EFST_FOOD_LUK # Cooked Nine Tail's Tails      #
+#############################################
+automacro Cumida {
+    # mude o status de acordo com o buff que vc vai pegar
+    status not EFST_FOOD_AGI
+    inventory "Pergaminho de Ganância" < 1
+    zeny > 10000
+        call {
+    #--------------  Configuração  ------------------#
+    # 0 # Primeiro, FOR+8, AGI+6, DES+4, ATQ+32, Esquiva+5!
+    # 1 # Segundo,INT+8,DES+6,VIT+4, ATQM+40!
+    # 2 # Terceiro, DES+8, AGI+6, SOR+4,ATQ+24, ATQM+24!
+    # 3 # Quarto, Todos os atributos +6, ATQ+24,ATQM+24!!
+    $buff = 0
+       
+        #Cidade do npc
+        $City = rachel
+       
+        # Adicione o Were do npc X Y
+        $npc = 111 143
+       
+        #--------------  Configuração  ------------------#
+        $rx = @eval(@arg("$npc", 1) + @random("-5","5"))
+    $ry = @eval(@arg("$npc", 2) + @random("-5","5"))
+               
+        log [ Indo Pegar Buff ]
+        do conf autoTalkCont 0
+        do move $City $rx $ry
+        pause 2
+        do talknpc $npc c c c c r0 c c c c c r$buff c c n
+        do conf autoTalkCont 1
+    }
+timeout 15
+}
