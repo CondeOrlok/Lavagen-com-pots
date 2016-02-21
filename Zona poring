@@ -1,0 +1,64 @@
+automacro porings {
+        map prontera
+        exclusive 1
+        hp > 5%
+call {
+                do conf route_randomWalk 0
+                do conf route_escape_randomWalk 0
+                do conf attackAuto 0
+                do move prt_fild08
+                pause 5
+                do move @rand(155, 165) @rand(362, 372)
+                do talknpc 159 371 c c c r0 c
+                #do move poring_w01 @rand(86, 108) @rand(100, 110)
+                pause 8
+                do move @rand(100, 103) @rand(95, 98)
+                pause 3
+                do chat join 0
+                do conf attackAuto 2  
+                }
+        timeout 20
+}
+ 
+ 
+automacro chatdentro {
+        hp > 1%
+        location poring_w01 107 65 99 73
+        call {
+                do chat join @rand(0, 1)
+        }
+        timeout 10
+}
+ 
+automacro entrarNovamente {
+        hp > 1%
+        location poring_w01 112 138
+        call {
+                do move @rand(100, 103) @rand(95, 98)
+                pause 3
+                do chat join 0
+                do conf attackAuto 2
+        }
+timeout 10
+}
+ 
+ 
+automacro trocarSala {
+        location poring_w01 107 65 99 73
+        packet_chatinfo
+        save chatID             #0
+        save title              #1
+        save num_users  #2
+        call {
+        log o lado $.hooksave1 está cheio trocando
+                if ($.hooksave2 > 5) {
+                        do chat leave
+                        if ($.hooksave0 == 0) {
+                        do chat join 1
+                        } elsif ($.hooksave0 == 1) {
+                        do chat join 0
+                }
+        }
+        timeout 3
+  }
+}
