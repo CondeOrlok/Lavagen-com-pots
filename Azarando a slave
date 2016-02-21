@@ -1,0 +1,12 @@
+automacro Azarando alave {
+   pubm /pm /E ai Gatinha|gatinha|/oi Gatinha|gata|
+   exclusive 1
+   timeout 5
+   pubm /pm /vamos tomar um café + tarde?|aceita sair + tarde/topa um refri?|
+   exclusive 2
+   timeout 5
+call {
+   pause 3
+   do pm "$.lastpm" @random ("Fala logo vc só quer me comer","cala esta boca,vamu logo trepa","fala sério vc acha q vou dar p vc")
+}
+}
